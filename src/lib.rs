@@ -1,8 +1,12 @@
+mod graph;
+
 #[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
+mod graph_tests {
+  use crate::graph::Graph;
+
+  #[test]
+  fn new_graph() {
+      let result: Graph<i32> = Graph::new();
+      assert_ne!(result, None);
+  }
 }

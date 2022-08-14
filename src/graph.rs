@@ -1,9 +1,9 @@
-[#derive Hash]
+use std::collections::HashSet;
+
 pub struct Node<T> {
   value: T,
 }
 
-[#derive Hash]
 pub struct Edge<T> {
   source: Node<T>,
   sink: Node<T>,
@@ -13,11 +13,11 @@ pub struct Graph<T> {
   edges: HashSet<Edge<T>>,
 } 
 
-impl Graph {
-  pub new() -> self {
+impl<T> Graph<T> {
+  pub fn new() -> Graph<T> {
       let g = Graph {
-          edges: HashSet::new();
-      }
+          edges: HashSet::new(),
+      };
       g
   }
 }

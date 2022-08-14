@@ -15,9 +15,9 @@ pub struct Graph<T> {
 
 impl<T> Graph<T> {
   pub fn new() -> Graph<T> {
-      let g = Graph {
-          edges: HashSet::new(),
-      };
-      g
+    let g: Graph<T> = Graph {
+        edges: HashSet::new(),
+    };
+    g
   }
 }

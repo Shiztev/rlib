@@ -2,8 +2,8 @@ use std::collections::HashSet;
 
 #[derive(Hash, Debug)]
 pub struct Node<T, U> {
-  id: T,
-  value: U,
+  pub id: T,
+  pub value: U,
 }
 
 impl<T, U> Node<T, U> {
@@ -13,18 +13,20 @@ impl<T, U> Node<T, U> {
   }
 }
 
+
 #[derive(Hash, Debug)]
-pub struct Edge<T, U> {
-  source: &Node<T, U>,
-  sink: &Node<T, U>,
+pub struct Edge<'a, 'b, T, U> {
+  pub source: &'a Node<T, U>,
+  pub sink: &'b Node<T, U>,
 }
 
-impl<T, U> Edge<T, U> {
+impl<T, U> Edge<'_, '_, T, U> {
   pub fn new(source: &Node<T, U>, sink: &Node<T, U>) -> Node<T, U> {
     let e: Edge<T, U> = Edge { source, sink, };
     e
   }
 }
+
 
 #[derive(Debug)]
 pub struct Graph<T, U> {

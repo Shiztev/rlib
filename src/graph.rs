@@ -15,11 +15,11 @@ impl<T, U> Node<T, U> {
 
 
 #[derive(Debug)]
-pub struct Graph<T, U> {
-  edges: HashMap<T, Node<T, U>>,
+pub struct Graph<'a, T, U> {
+  edges: HashMap<T, Vec<&'a Node<T, U>>>,
 } 
 
-impl<T, U> Graph<T, U> {
+impl<T, U> Graph<'_, T, U> {
   pub fn new() -> Graph<T, U> {
     let g: Graph<T, U> = Graph { edges: HashMap::new(), };
     g
@@ -27,5 +27,13 @@ impl<T, U> Graph<T, U> {
 
   pub fn is_empty(&self) -> bool {
     self.edges.is_empty()
+  }
+
+  pub fn insert(&self, node: &Node<T, U>) {
+    if self.edges.contains_key(&node.id) {
+      println!("Graph already contains node {}", node.id);
+    } else {
+      self.edges.insert(node.id, vec![node]);
+    }
   }
 }

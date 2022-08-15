@@ -1,6 +1,6 @@
 use std::collections::{HashMap};
 
-#[derive(Hash, Debug)]
+#[derive(PartialEq, Eq, Hash, Debug)]
 pub struct Node<T, U> {
   pub id: T,
   pub value: U,
@@ -20,7 +20,7 @@ pub struct Graph<'a, T, U> {
 } 
 
 impl<T, U> Graph<'_, T, U> {
-  pub fn new() -> Graph<T, U> {
+  pub fn new() -> Graph<'static, T, U> {
     let g: Graph<T, U> = Graph { edges: HashMap::new(), };
     g
   }
@@ -32,12 +32,12 @@ impl<T, U> Graph<'_, T, U> {
   pub fn insert(&self, node: &Node<T, U>) -> bool {
     let r: bool;
     if self.edges.contains_key(&node.id) {
-      println!("Graph already contains node {}", node.id);
+      println!("Graph already contains node {:?}", node.id);
       r = false
     } else {
       match self.edges.insert(node.id, vec![node]) {
         Some(v) => panic!(
-          "Got {:?} when inserting non-existing key {}", v, node.id),  // TODO: node needs string for error
+          "Got {:?} when inserting non-existing key {:?}", v, node.id),  // TODO: node needs string for error
         None => r = true,
       } 
     }

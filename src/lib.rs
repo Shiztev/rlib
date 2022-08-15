@@ -6,7 +6,7 @@ mod graph_tests {
 
   #[test]
   fn new_graph() {
-      let result: Graph<i32> = Graph::new();
+      let result: Graph<i32, i32> = Graph::new();
       assert_ne!(result, None);
   }
 }

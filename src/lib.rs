@@ -23,17 +23,3 @@ mod node_tests {
     assert_eq!(result.value, actual);
   }
 }
-
-#[cfg(test)]
-mod edge_tests {
-  use crate::graph::{Edge, Node};
-
-  #[test]
-  fn new_edge() {
-    let n1: Node<i32, i32> = Node::new(0, 0);
-    let n2: Node<i32, i32> = Node::new(0, 0);
-    let result: Edge<i32, i32> = Edge::new(&n1, &n2);
-    assert_eq!(result.source, n1);
-    assert_eq!(result.sink, n2);
-  }
-}

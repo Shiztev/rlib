@@ -1,4 +1,4 @@
-use std::collections::HashSet;
+use std::collections::{HashMap};
 
 #[derive(Hash, Debug)]
 pub struct Node<T, U> {
@@ -14,28 +14,14 @@ impl<T, U> Node<T, U> {
 }
 
 
-#[derive(Hash, Debug)]
-pub struct Edge<'a, 'b, T, U> {
-  pub source: &'a Node<T, U>,
-  pub sink: &'b Node<T, U>,
-}
-
-impl<T, U> Edge<'_, '_, T, U> {
-  pub fn new(source: &Node<T, U>, sink: &Node<T, U>) -> Node<T, U> {
-    let e: Edge<T, U> = Edge { source, sink, };
-    e
-  }
-}
-
-
 #[derive(Debug)]
 pub struct Graph<T, U> {
-  edges: HashSet<Edge<T, U>>,
+  edges: HashMap<T, Node<T, U>>,
 } 
 
 impl<T, U> Graph<T, U> {
   pub fn new() -> Graph<T, U> {
-    let g: Graph<T, U> = Graph { edges: HashSet::new(), };
+    let g: Graph<T, U> = Graph { edges: HashMap::new(), };
     g
   }
 

@@ -29,11 +29,30 @@ impl<T, U> Graph<'_, T, U> {
     self.edges.is_empty()
   }
 
-  pub fn insert(&self, node: &Node<T, U>) {
+  pub fn insert(&self, node: &Node<T, U>) -> bool {
+    let r: bool;
     if self.edges.contains_key(&node.id) {
       println!("Graph already contains node {}", node.id);
+      r = false
     } else {
-      self.edges.insert(node.id, vec![node]);
+      match self.edges.insert(node.id, vec![node]) {
+        Some(v) => panic!(
+          "Got {:?} when inserting non-existing key {}", v, node.id),  // TODO: node needs string for error
+        None => r = true,
+      } 
+    }
+    r
+  }
+
+  pub fn connect(&self, source: &Node<T, U>, sink: &Node<T, U>) -> bool {
+    if self.edges.contains_key(&source.id) {
+      self.edges.get(&source.id).expect(
+        "Graphs edges contains key {source.id}, but failed to access keys contents."
+      ).append(sink);
+      true
+    } else {
+      println!("Source {} does not exist in this graph.", source.id);
+      false
     }
   }
 }

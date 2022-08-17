@@ -7,7 +7,7 @@ mod graph_tests {
   #[test]
   fn new_graph() {
     let result: Graph<i32, i32> = Graph::new();
-    assert_ne!(result.is_empty(), true);
+    assert_eq!(result.is_empty(), true);
   }
 }
 
@@ -21,5 +21,13 @@ mod node_tests {
     let actual: i32 = 0;
     assert_eq!(result.id, actual);
     assert_eq!(result.value, actual);
+  }
+
+  #[test]
+  fn connect_nodes() {
+    let mut n1 = Node::new(0, 0);
+    let n2 = Node::new(1, 0);
+    assert!(n1.connect(n2.id));
+    assert!(!n1.connect(n2.id));
   }
 }

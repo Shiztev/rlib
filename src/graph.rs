@@ -49,15 +49,14 @@ impl<T, U> Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug{
 
     if self.nodes.contains_key(&id) {
       println!("Graph already contains node {:?}", id);
-      r = false
+      false
     } else {
       match self.nodes.insert(node.id.clone(), node) {
         Some(v) => {println!(
           "Got {:?} when inserting non-existing key {:?}", v, id); return false;},
-        None => r = true,
+        None => return true,
       } 
     }
-    r
   }
 
   pub fn connect(&mut self, source: &T, sink: &T) -> bool {

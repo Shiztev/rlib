@@ -25,9 +25,9 @@ mod node_tests {
 
   #[test]
   fn connect_nodes() {
-    let mut n1 = Node::new(0, 0);
-    let n2 = Node::new(1, 0);
-    assert!(n1.connect(n2.id));
-    assert!(!n1.connect(n2.id));
+    let mut n1: Node<i32, i32> = Node::new(0, 0);
+    let n2: Node<i32, i32> = Node::new(1, 0);
+    assert!(n1.connect(&n2.id));
+    assert!(!n1.connect(&n2.id));
   }
 }

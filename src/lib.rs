@@ -1,8 +1,10 @@
 mod graph;
+mod node;
 
 #[cfg(test)]
 mod graph_tests {
-  use crate::graph::{Graph, Node};
+  use crate::graph::Graph;
+  use crate::node::Node;
 
   #[test]
   fn new_graph() {
@@ -34,7 +36,7 @@ mod graph_tests {
 
 #[cfg(test)]
 mod node_tests {
-  use crate::graph::Node;
+  use crate::node::Node;
 
   #[test]
   fn new_node() {

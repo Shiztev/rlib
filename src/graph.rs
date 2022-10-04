@@ -9,15 +9,20 @@ pub struct Graph<T, U> {
 }
 
 impl<T, U> Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug{
+  /// Create a new, empty graph.
   pub fn new() -> Graph<T, U> {
     let g: Graph<T, U> = Graph { nodes: HashMap::new(), };
     g
   }
 
+  /// Check if the graph is empty.
+  /// 
+  /// Returns true if empty, false otherwise.
   pub fn is_empty(&self) -> bool {
     self.nodes.is_empty()
   }
 
+  /// Insert a node with a unique id into the graph.
   pub fn insert(&mut self, node: Node<T, U>) -> bool {
     let r: bool;
     let id: T = node.id.clone();
@@ -37,6 +42,7 @@ impl<T, U> Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug{
     }
   }
 
+  /// Connect two nodes with respect to their ids.
   pub fn connect(&mut self, source: &T, sink: &T) -> bool {
     if !self.nodes.contains_key(sink) {
       println!("Sink {} does not exist in this graph.", sink);

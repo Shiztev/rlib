@@ -1,5 +1,6 @@
 mod graph;
 mod heap;
+mod tree;
 mod node;
 
 #[cfg(test)]

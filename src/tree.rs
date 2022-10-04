@@ -1,3 +1,4 @@
+/// Tree implementation with a vector.
 pub struct Tree<T> {
   nodes: Vec<Option<T>>,
 }

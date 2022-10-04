@@ -25,10 +25,13 @@ impl<T, U> Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug{
     if self.nodes.contains_key(&id) {
       println!("Graph already contains node {:?}", id);
       false
+
     } else {
       match self.nodes.insert(node.id.clone(), node) {
         Some(v) => {println!(
-          "Got {:?} when inserting non-existing key {:?}", v, id); return false;},
+          "Got {:?} when inserting non-existing key {:?}", v, id);
+          return false;
+        },
         None => return true,
       } 
     }
@@ -38,11 +41,13 @@ impl<T, U> Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug{
     if !self.nodes.contains_key(sink) {
       println!("Sink {} does not exist in this graph.", sink);
       false
+
     } else {
       if self.nodes.contains_key(source) {
         let s: &mut Node<T, U> = self.nodes.get_mut(source).expect("Node {source} existence confirmed, but does not exist in graph. Should not be possible.");
         s.connect(sink);
         true
+
       } else {
         println!("Source {} does not exist in this graph.", source);
         false

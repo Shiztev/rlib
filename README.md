@@ -1,4 +1,4 @@
 # rlib
 Simple data structure library. 
 
-Developed to learn about Rust lifetimes, traits, and the borrow checker.
+Developed to learn about Rust's lifetimes, traits, and the borrow checker.

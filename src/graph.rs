@@ -4,9 +4,9 @@ use crate::node::Node;
 
 /// A collection of nodes which can have directed connections.
 #[derive(Debug)]
-pub struct Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug {
+pub struct Graph<T, U> {
   nodes: HashMap<T, Node<T, U>>,
-} 
+}
 
 impl<T, U> Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug{
   pub fn new() -> Graph<T, U> {

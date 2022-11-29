@@ -19,7 +19,6 @@ impl<T, U> Graph<T, U> where T: Eq + Hash + Debug + Display + Clone, U: Debug{
   }
 
   pub fn insert(&mut self, node: Node<T, U>) -> bool {
-    let r: bool;
     let id: T = node.id.clone();
 
     if self.nodes.contains_key(&id) {
